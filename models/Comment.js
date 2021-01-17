@@ -1,13 +1,9 @@
-// importing model framework
 const { Schema, model, Types } = require('mongoose');
-
-//importing date util
 const dateFormat = require('../utils/dateFormat');
 
-// reply schema
 const ReplySchema = new Schema(
   {
-    // set custom id to avoid confusion with parent comment's _id field
+    // set custom id to avoid confusion with parent comment _id
     replyId: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId()
@@ -31,7 +27,6 @@ const ReplySchema = new Schema(
   }
 );
 
-//creating comment schema
 const CommentSchema = new Schema(
   {
     writtenBy: {
@@ -56,11 +51,11 @@ const CommentSchema = new Schema(
     id: false
   }
 );
-// get total count of replies
-CommentSchema.virtual('replyCount').get(function () {
-  return this.replies.lenght
+
+CommentSchema.virtual('replyCount').get(function() {
+  return this.replies.length;
 });
-  
-  const Comment = model('Comment', CommentSchema);
-  
-  module.exports = Comment;
+
+const Comment = model('Comment', CommentSchema);
+
+module.exports = Comment;

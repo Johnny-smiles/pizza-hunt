@@ -1,4 +1,3 @@
-// importing from comment controller
 const router = require('express').Router();
 const {
   addComment,
